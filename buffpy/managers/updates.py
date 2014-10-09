@@ -127,7 +127,7 @@ class Updates(list):
       for media_type, media_item in media.iteritems():
         post_data += media_format % (media_type, media_item)
 
-    response = self.api.post(url=url, data=post_data)
+    response = self.api.post(url=url, data=post_data.encode('utf8'))
     new_update = Update(api=self.api, raw_response=response['updates'][0])
 
     self.append(new_update)
